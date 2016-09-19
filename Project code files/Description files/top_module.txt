@@ -1,0 +1,9 @@
+The top module is basically an empty block which contains all processor modules.
+This empty block is designed to act as a container for all the modules.
+A set of local signals are defined inside this top module.
+These local signals act as a Link to connect  two ports of sub modules.
+The top module also has its own ports defined which gets displayed in final test bench,
+Now inorder to view submodule ports in final test bench a connection must be established between submodule port and top module port.
+This connection is established by the local signals that act as link.
+The local signals apart from connecting two sub module ports also drive the top module ports.
+So with this design logic value of any submodule port can be viewed in final test bench.

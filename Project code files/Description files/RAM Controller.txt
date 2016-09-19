@@ -1,0 +1,11 @@
+The external RAM on Nexys2 Spartan-3E FPGA is 16Mbyte cellular RAM.It is also BIG ENDIAN.
+So when instructions are fetched from RAM first higher byte is recieved followed by lower byte.
+The signals for RAM controller can be found in the documentation given on xilinx website specific for FPGA board version.
+The operating frequency for the RAM has to be less than or eual to 6.25 MHz for proper fetching operation.
+For the RAM which we used the operating frequency was set to 6.25 MHz.
+It consists of an initial setup procedure which enables the RAM for read operation.
+A 23 bit address bus is used to access RAM location.
+The addres bus is connected to External RAM address port.
+When address bus value changes, the RAM sends out instruction stored at that memory location.
+Care must be taken that address port does not change faster than 6.25 Mhz ,which means that the operating frequency for RAM is 6.25 MHz.
+The value read from RAM is on a 16 bit bus connected to the Instruction queue input.

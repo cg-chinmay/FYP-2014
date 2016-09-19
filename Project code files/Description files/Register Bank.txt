@@ -1,0 +1,33 @@
+It consists of 16 registers with last 3 as special purpose registers such stack,link and program counter.
+The signals used in the design are :
+clk:clock
+reset:signal to reset all registers
+wr_en:write enable signal
+w_addr:specifies write address and selects particular register.
+w_data:data to be written
+r_addr1:read address for register 1
+r_addr2:read address for register 2
+r_data1:data from register 1
+r_data2:data from register 2
+pcin:program counter address
+stack_in:stack pointer address
+link_in:link register address
+
+Algorithm:
+A.Writing process
+1.Convert wr_addr into an integer value and store it in temp variable.
+2.If reset is set set all register locations to value 0.
+3.If rising edge of clock is detected check whether wr_en is set and whether temp is less 13.
+4.If above conditions are true then array_reg(temp) <=w_data ,that is write the data at specified address.
+For stack,program counter counter and Link register there are separate modules to write data into them so register bank is used only for writing data into r0 to r12.
+
+B.Read process
+1.Store r_addr1 into variable temp1 and r_addr2 into variable temp2
+2.If temp1 is less than 13 then read from register bank as r_data1<=array_reg(temp1).
+3.Similarly for temp2<13 ,r_data2<=array_reg(temp2).
+4.For (temp1 or temp2 ) > 13 read either from program counter,stack or link which are separate modules.
+ 
+Note : for store instruction 2 additional ports were added which are r_data3 and r_addr3.
+r_data3 was used to read out the value from specified (r_addr3) address .
+Store instruction already used r_addr1 and r_addr2 to generate the destination address.
+So the destination address was given to the r_addr3 port. 

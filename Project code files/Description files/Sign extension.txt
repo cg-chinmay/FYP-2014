@@ -1,0 +1,12 @@
+The sign extension block is used to extend a 3 bit ,5 bit, 8 bit, 11 bit immediate value into a 16 bit value.
+Three signals are used :
+datain:16 bit input signal
+imm:2 bit signal to determine whether 3,5,8,11 bit value is to be used as input.
+dataout:16 bit output signal
+
+The algorithm is as follows.
+1.Check status of imm signal
+2.Depending on 3,5,8,11 bit input immediate value take the MSB of input and store it in temp variable.
+3.Check whether temp is '1' or '0'.
+4.If 1 then append '1' to the input immediate value to make it 16 bit signal
+5.If 0 then append all 0's to the input immediate value.

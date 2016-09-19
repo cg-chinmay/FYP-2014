@@ -1,0 +1,22 @@
+1.On rising edge of clock take Instruction from Queue on port Inst_in(16 bit).
+2.Segment the received Instruction into different parts such as
+a.inp1:= '0' & inst_in(8 downto 6) for rm
+b.shift:= inst_in(9 downto 6);  for shift value for lsl,lsr
+c.inp2:= '0' & inst_in(5 downto 3) for rn
+d.inp3:= '0' & inst_in(10 downto 8)
+e.imm_data3 := inst_in(8 downto 6) for 3 bit imm. data
+f.imm_data8 := inst_in(7 downto 0) for 8 bit imm. data
+g.imm_data5 := inst_in(10 downto 6) for 5 bit imm. data
+h.imm_data11 := inst_in(10 downto 0) for  branching
+i.dest:= '0' & inst_in(2 downto 0) for rd
+where
+rm:operand 1 for ALU
+rn:operand 2 for ALU
+rd:destination register
+imm. data : immediate data
+3.Analyze inst_in(15 downto 13) and decide whether it is data processing,ADD/SUB/CMP/MOV,
+Data Transfer or Data Memory Instruction.
+4.Analyze next 3 bits of inst_in i.e inst_in(12 downto 10) and decide to which subgroup the given instruction
+belongs.
+5.Assign proper signals the values extracted in step 2.
+6.Repeat steps 1 to 5 .

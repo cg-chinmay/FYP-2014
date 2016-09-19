@@ -1,0 +1,24 @@
+Alu is a combinational design.Depending on the alu select lines the operations are performed
+Signals used:
+Rn:Operand 2
+rd:result
+psr:4 bit flag register (NZCV) connected to cpsr
+alu_sel:Alu select lines
+alu_cy:carry flag status given by decoder 
+
+data forwarding signals:
+Rm_reg: operand from register
+Rm_mem: operand from data memory (memory access cycle)
+Rm_wb:operand taken from write back cycle
+input1:Operand 1 address
+
+Algorithm:
+Data forwarding
+1.Check whether input1 is equal to write_address.If true operand1(Rm) = Rm_wb
+2.Check whether input1 is equal to mem_address,if true Rm=Rm_mem
+3.Else Rm =Rm_reg that is operand 1 from register bank
+
+For ALU operation
+Keep checking status of ALU select lines
+Depending on ALU select lines perform corresponding operation such as add,sub and store the result in rd.
+The psr flag bits are changed depending on the operation performed.

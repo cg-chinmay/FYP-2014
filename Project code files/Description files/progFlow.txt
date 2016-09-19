@@ -1,0 +1,24 @@
+1.Fill 16 bytes of Instruction Queue from external RAM
+2.Send Ready signal to decoder when the Queue is full
+3.Auto Increment Program Counter whose output is used as an index for Instruction Queue.
+4.Read Instruction corresponding to the index of program counter from Queue into the decoder.
+5.Segment the Instruction into different parts and store them into different variables inside decoder.
+6.Analyze each part sequentially to identify the Instruction type and accordingly generate signals.
+7.Pass these signals to Control Unit.
+8.Control Unit passes these signals at correct stage of the pipeline to the following Units.
+a.Sign Extension 
+1.Identifies the amount of bits to be appended,if there is an immediate data.
+b.Barrel Shifter
+1.Identifies whether the data from sign extension is to be shifted .
+c.Register Bank
+1.The number of registers to be read at most two and their addresses.
+d.Data Memory & Stack
+1.The write enable signal is enabled if data memeory is to be accessed.
+9.ALU receives the alu select signals which tells the ALU the operation to be performed.
+e.g alusel=0000 for Add Instruction,
+alusel=0011 for MOV Instruction.
+10.Alu produces result and passes it to the input of data memory.
+11.If data memory is to be accessed then alu result is written or used as an address (e.g in Store Instruction).
+12.If Instruction is not related to data memory then the ALu result is passed to next stage that is Write back
+and the result is stored in the destination register of Register Bank.
+13.Steps 3 to 12 are repeated till all instructions are fetched from the queue which forms a 5 stage pipeline. 

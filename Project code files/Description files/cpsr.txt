@@ -1,0 +1,3 @@
+This is a Flag register of 4 flags which are Negative,Zero,Carry and Overflow abbreviated as NZCV.
+On every rising edge of clock the flags are assigned values from the ALU result .
+These assigned values are then further passed to the decoder which are used for conditional jump Instructions.

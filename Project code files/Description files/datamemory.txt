@@ -1,0 +1,20 @@
+The Data memory consists of 256 memory locations which are shared between Stack and RAM.
+0 -127 are for stack
+128-255 are for RAM.
+It has to perform 3 functions:Identify whether the input instruction needs stack e.g in PUSH/PULL or 
+RAM e.g Load/STORE and 3rd which is just bypass the data memory and pass the input for write back stage.
+Following steps are executed
+1.On rising edge of clock check the status of Ram_Stack signal.
+-If it is 1 it is stack operation
+--If it is a stack operation then next step is to check whether it is Push or Pop.
+---For Push check whether the stack is not full,if not full then push the value and decrement stack pointer.
+---Similarly for Pop check whether stack is not empty,if not empty then pop out the value and increment stack pointer.
+
+--If Ram_Stack is 0 then it is RAM operation.
+---In this case take the input which is the address of memory location and add 128 to it so that the value gets 
+stored in RAM section and not stack.
+
+--If Ram_STACK is 'Z' then it is neither Stack nor RAM operation.
+---In this case the input value is just forwarded for write back cycle.
+
+Repeat the above steps for every rising edge of the clock. 

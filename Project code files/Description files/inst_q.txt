@@ -1,0 +1,17 @@
+Instruction queue is used to store set of instructions fetched from RAM.
+Once the queue is filled up, decoder starts fetching instruction from this queue one by one.
+Signals used are :
+inst_wr : signifies whether instruction should be written inside queue.
+Inst_In:16 bit bus which takes in Instructions from RAM.
+Inst_Out:16 bit bus which reads out instruction to the decoder.
+Inst_ptr:16 bit pointer used while reading instructions,it gets its value from program counter.
+wr_inst_ptr:4 bit pointer used for writing instructions into queue from RAM. 4 bit pointer is sufficient to traverse 16 locations of the queue.
+ 
+The algorithm for working of queue is as follows:
+1.Check whether clock has toggled its valu from 0 to 1.
+2.If true check whether instr_wr signal is enabled.
+3.If true calculate index value from wr_inst_ptr.
+4.Store the actual instruction received on port inst_in into inst_cache at location pointed by index.
+5.Recalculate index from inst_ptr which is an input port (it gets its value from program counter).
+6.Read instruction from inst_cache at location index into Inst_Out port which is connected to decoder.
+7.Repeat above steps for every rising edge of clock.

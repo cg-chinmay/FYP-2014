@@ -1,0 +1,15 @@
+The number of inputs for control unit are equal to the number of outputs of decoder.
+The Control unit just passes the recieved signals to other units at correct time or at correct stage of 
+the pipeline.
+The control Unit is divided into 3 processes:
+A.Decode
+1.On rising edge buffer the input signals into temporary signals to produce necessary delay.
+
+B.Execute
+1.Assign ALU select lines,barrel shifter,register read address ,proper signals from buffered signals in previous step,rest of the signals are again buffered to 
+create one more cycle delay.
+
+C.memory
+1.Assign the remaining units such data memory actual signals,also assign the register write address.
+
+The above 3 processes are repeated for every rising edge of clock so that they run concurrently.

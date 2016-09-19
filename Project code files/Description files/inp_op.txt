@@ -1,0 +1,5 @@
+This is input output module.
+It is mainly used for connecting 7 segment display to the registers contained in register bank.
+The values contained in those registers can be displayed on seven segment display.
+Apart from connecting registers it also synchroises the functioning of seven segment display and handles the multiplexing of the display.
+

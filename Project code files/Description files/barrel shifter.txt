@@ -1,0 +1,15 @@
+Barrel shifter provides the operand 2 to the ALU.
+The operand 2 can be an immediate data or from register bank.
+It performs the rotation operation on input data.
+It makes use of two functions which are SHR and SHL which are shift right and shift left.
+These functions are provided by the vhdl IEEE package.
+The 2 signals - direction and rotation are used to determine the direction of shift and amount of bits by which the data 
+should be shifted,
+The direction and rotation values are set by the decoder.For data forwarding there are 4 signals which are 
+data_writeback_cycle:It takes data from write back cycle
+data_memory_cycle:It takes data from memory acess cycle
+address_writeback: It is the address of write back register
+address_memaccess:It is the address during memory access cycle.
+The addresses are compared with the input address and if there is a match then the data from appropriate stage is forwarded
+to barrel shifter.
+ 
