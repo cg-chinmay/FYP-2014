@@ -21,8 +21,8 @@ prog_flow is the flowchart representing the entire program flow for the designed
 PDF copy of Research paper for publication alongwith acceptance letter in Journal.
 
 ## How to use 
-1.Check the prog_flow to get an idea of the entire program logic
-2.Check Description Files folder located inside Project code files
-3.Check the code files written in VHDL
-4.Analyze testbench & simulation folder.
+1. Check the prog_flow to get an idea of the entire program logic
+2. Check Description Files folder located inside Project code files
+3. Check the code files written in VHDL
+4. Analyze testbench & simulation folder.
  
